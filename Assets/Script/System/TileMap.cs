@@ -9,9 +9,9 @@ public class TileMap : MonoBehaviour {
 	
         for(i=-4.5f;i<5.5f;i++)
         {
-            for (j = 2.5f; j > -5.5f; j--)
+            for (j = 0f; j >-4.5f; j--)
             { 
-                Instantiate(Tile_base, new Vector3(i, j, 0), Quaternion.identity);
+                Instantiate(Tile_base, new Vector3(i, j,0), Quaternion.identity);
              }
         }
 	}

@@ -4,13 +4,17 @@ using System.Collections;
 public class Tile : MonoBehaviour {
 
     int Hp = 5;
-
+    
     public GameObject [] tile_ =null; 
 	// Use this for initialization
 	void Start () {
-	
-	}
-	
+
+     
+    }
+	void Awake()
+    {
+       
+    }
 	// Update is called once per frame
 	void Update () {
 	
@@ -18,10 +22,10 @@ public class Tile : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)//충돌 체크 함수
     {
-        if (coll.gameObject.tag == "PICK")
+        if (coll.gameObject.tag == "PLAYER")
         {
-            Hp -= 1;
-            TileBreakCheak();
+           Hp -= 1;
+           TileBreakCheak();
         }
     }
 
@@ -30,11 +34,14 @@ public class Tile : MonoBehaviour {
         if(Hp>0)
         {
             Destroy(tile_[Hp]);
-            Debug.Log(Hp);
+            
         }
         else
         {
+            
+            
             Destroy(this.gameObject);
+           
         }
     }
 }

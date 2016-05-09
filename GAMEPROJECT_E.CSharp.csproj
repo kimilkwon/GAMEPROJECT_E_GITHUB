@@ -70,7 +70,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\Monster.cs" />
     <Compile Include="Assets\Script\System\CameraCenter.cs" />
+    <Compile Include="Assets\Script\System\CtrlCenter.cs" />
     <Compile Include="Assets\Script\System\Tile.cs" />
     <Compile Include="Assets\Script\System\TileMap.cs" />
   </ItemGroup>
