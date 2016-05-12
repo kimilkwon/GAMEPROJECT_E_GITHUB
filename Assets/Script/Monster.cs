@@ -10,13 +10,21 @@ public class Monster : MonoBehaviour {
     Vector3[] MovementTarget = new Vector3[100];
     int movement = 0;
     int movementMax = 0;
-
+    int HP = 5;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("PLAYER");
     }
-
+    void OnTriggerEnter2D(Collider2D coll)//충돌 체크 함수
+    {
+        if (coll.gameObject.tag == "BULLET")
+        {
+            HP -= 1;
+           
+            Destroy(coll.gameObject);
+        }
+    }
     void Update()
     {
        

@@ -28,6 +28,11 @@ public class Tile : MonoBehaviour {
            TileBreakCheak();
             Destroy(coll.gameObject);
         }
+        if (coll.gameObject.tag == "BULLET")
+        {
+            
+            Destroy(coll.gameObject);
+        }
     }
 
     void TileBreakCheak()
