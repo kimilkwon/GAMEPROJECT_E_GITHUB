@@ -22,10 +22,11 @@ public class Tile : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)//충돌 체크 함수
     {
-        if (coll.gameObject.tag == "PLAYER")
+        if (coll.gameObject.tag == "PICK")
         {
            Hp -= 1;
            TileBreakCheak();
+            Destroy(coll.gameObject);
         }
     }
 
