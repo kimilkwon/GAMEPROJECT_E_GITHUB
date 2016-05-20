@@ -11,7 +11,7 @@ public class CameraCenter : MonoBehaviour {
     }
     void LateUpdate()
     {
-        transform.position = new Vector3(AT.position.x, AT.position.y, transform.position.z);
+        transform.position = new Vector3(AT.position.x, AT.position.y+10, AT.position.z);
     }
 
 

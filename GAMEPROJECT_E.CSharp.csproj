@@ -69,15 +69,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Character.cs" />
+    <Compile Include="Assets\Script\Character\Character.cs" />
+    <Compile Include="Assets\Script\Character\Character_Rotation.cs" />
+    <Compile Include="Assets\Script\Character\Character_move.cs" />
+    <Compile Include="Assets\Script\Character\Pick.cs" />
     <Compile Include="Assets\Script\Monster.cs" />
-    <Compile Include="Assets\Script\System\Bullet.cs" />
+    <Compile Include="Assets\Script\System\Bullet2.cs" />
     <Compile Include="Assets\Script\System\CameraCenter.cs" />
-    <Compile Include="Assets\Script\System\CtrlCenter.cs" />
     <Compile Include="Assets\Script\System\Cursor_.cs" />
-    <Compile Include="Assets\Script\System\Pick.cs" />
-    <Compile Include="Assets\Script\System\Tile.cs" />
-    <Compile Include="Assets\Script\System\TileMap.cs" />
+    <Compile Include="Assets\Script\System\Tile\Tile.cs" />
+    <Compile Include="Assets\Script\System\Tile\TileCollison.cs" />
+    <Compile Include="Assets\Script\System\Tile\TileMap.cs" />
+    <Compile Include="Assets\Script\Tower\BuildingManager.cs" />
+    <Compile Include="Assets\Script\Tower\Bullet.cs" />
+    <Compile Include="Assets\Script\Tower\Tower.cs" />
+    <Compile Include="Assets\Script\Tower\TowerSpot.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

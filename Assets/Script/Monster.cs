@@ -10,83 +10,49 @@ public class Monster : MonoBehaviour {
     Vector3[] MovementTarget = new Vector3[100];
     int movement = 0;
     int movementMax = 0;
-    int HP = 5;
-
+    float hp = 500;
+    NavMeshAgent nav;
     void Start()
     {
+        
+    }
+    void Awake()
+    {
         player = GameObject.FindGameObjectWithTag("PLAYER");
+        nav = GetComponent<NavMeshAgent>();
     }
     void OnTriggerEnter2D(Collider2D coll)//충돌 체크 함수
     {
         if (coll.gameObject.tag == "BULLET")
         {
-            HP -= 1;
+           // hp -= 1;
            
-            Destroy(coll.gameObject);
+          //  Destroy(coll.gameObject);
         }
+    }
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+       
+        Destroy(gameObject);
     }
     void Update()
     {
        
         if (start != false)
         {
-            Monster_Move();
-            ArrayMaxCheck();
-        }
-    }
-    void ArrayMaxCheck() 
-    {
-        if(movementMax>= 30)
-        {
-            movementMax = 0;
-        }
-        if (movement >= 30)
-        {
-            movement = 0;
-        }
-    }
-    void Monster_Move()
-    {
-        float dist=0;
-
-        Vector3 Direction = (MovementTarget[movement] - this.transform.position);
-        dist = Vector3.Distance(this.transform.position, MovementTarget[movement]);
-        if (dist < 1f)
-        {
-                movement++;
-                Debug.Log(movement);
-        }
-        else if(movement == movementMax)
-        {
             
-            PlayerMovementTarget = player.transform.position;
-            Direction = (PlayerMovementTarget - this.transform.position);
-            Direction.Normalize();
-            this.transform.Translate(Direction * speed * Time.deltaTime);
         }
-        else
-        {
-            dist = Vector3.Distance(this.transform.position, player.transform.position);
-            if (dist > 5f)
-            {
-                speed += 0.01f;
-            }
-            else if (dist < 4f)
-            {
-                speed = 0.25f;
-            }
-            Direction.Normalize();
-            this.transform.Translate(Direction * speed * Time.deltaTime);
-
-        }
+        nav.SetDestination(player.transform.position);
     }
-
-    public void MonsterTargetPoint(Vector3 position)
-    {
-        start = true;
-        MovementTarget[movementMax] = position;
-        movementMax++;
-    }
+    
 
 }
 
