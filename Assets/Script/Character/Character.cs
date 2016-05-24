@@ -34,7 +34,7 @@ public class Character : MonoBehaviour {
     void Start()
     {
         
-        monster = GameObject.Find("monster").GetComponent<Monster>();
+        monster = GameObject.Find("ZOMBI").GetComponent<Monster>();
     }
    
 

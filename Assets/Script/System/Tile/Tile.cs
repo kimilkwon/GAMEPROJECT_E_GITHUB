@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
-    public int hp = 5;
+    public int hp = 4;
     public GameObject towerSpot = null;
     public GameObject [] tile_ =null;
      TileCollison tileColl = null;

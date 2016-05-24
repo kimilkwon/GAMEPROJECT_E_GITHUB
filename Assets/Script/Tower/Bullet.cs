@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void DoBulletHit() {
-		// TODO:  What if it's an exploding bullet with an area of effect?
+		
 
 		if(radius == 0) {
 			target.GetComponent<Monster>().TakeDamage(damage);
@@ -53,13 +53,13 @@ public class Bullet : MonoBehaviour {
 			foreach(Collider c in cols) {
                 Monster m = c.GetComponent<Monster>();
 				if(m != null) {
-					// TODO: You COULD do a falloff of damage based on distance, but that's rare for TD games
+					
 					m.GetComponent<Monster>().TakeDamage(damage);
 				}
 			}
 		}
 
-		// TODO: Maybe spawn a cool "explosion" object here?
+	
 
 		Destroy(gameObject);
 	}

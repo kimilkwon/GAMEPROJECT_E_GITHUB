@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class TowerSpot : MonoBehaviour {
-
+    void Start()
+    {
+        this.transform.rotation = Quaternion.Euler(90f, 0, 0);
+    }
 	void OnMouseUp() {
-		Debug.Log("TowerSpot clicked.");
+		
 
 		BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
 		if(bm.selectedTower != null) {
@@ -16,10 +19,20 @@ public class TowerSpot : MonoBehaviour {
 
 			sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
             */
-			// FIXME: Right now we assume that we're an object nested in a parent.
+			
 			Instantiate(bm.selectedTower, transform.position, transform.rotation);
 			Destroy(transform.gameObject);
-		}
-	}
+         
+                GameObject[] obj = GameObject.FindGameObjectsWithTag("DRAG");
+                foreach (GameObject ob in obj)
+                {
 
+                    Destroy(ob);
+
+                }
+            
+        }
+	}
+   
+ 
 }

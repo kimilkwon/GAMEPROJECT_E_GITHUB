@@ -4,13 +4,13 @@ using System.Collections;
 public class Tower : MonoBehaviour {
 
 	Transform turretTransform;
-
-	public float range = 10f;
+    Tower_Animation tower_animation;
+	public float range = 0.5f;
 	public GameObject bulletPrefab;
 
 	public int cost = 5;
 
-	float fireCooldown = 0.5f;
+	float fireCooldown = 1.0f;
 	float fireCooldownLeft = 0;
 
 	public float damage = 1;
@@ -19,46 +19,63 @@ public class Tower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		turretTransform = transform.Find("Turret");
-	}
+        turretTransform.rotation = Quaternion.Euler(0,0, 0);
+
+    }
+    void Awake()
+    {
+        tower_animation = GetComponentInChildren<Tower_Animation>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		// TODO: Optimize this!
-		Monster[] monsters = GameObject.FindObjectsOfType<Monster>();
+        if (tower_animation.construct == true)
+        {
+            Monster[] monsters = GameObject.FindObjectsOfType<Monster>();
 
-        Monster nearestEnemy = null;
-		float dist = Mathf.Infinity;
+            Monster nearestEnemy = null;
+            float dist = Mathf.Infinity;
 
-		foreach(Monster m in monsters) {
-			float d = Vector3.Distance(this.transform.position, m.transform.position);
-			if(nearestEnemy == null || d < dist) {
-				nearestEnemy = m;
-				dist = d;
-			}
-		}
+            foreach (Monster m in monsters)
+            {
+                float d = Vector3.Distance(this.transform.position, m.transform.position);
+                if (nearestEnemy == null || d < dist)
+                {
+                    nearestEnemy = m;
+                    dist = d;
+                }
+            }
 
-		if(nearestEnemy == null) {
-			Debug.Log("No enemies?");
-			return;
-		}
+            if (nearestEnemy == null)
+            {
+                Debug.Log("No enemies?");
+                return;
+            }
 
-		Vector3 dir = nearestEnemy.transform.position - this.transform.position;
+            Vector3 dir = nearestEnemy.transform.position - this.transform.position;
 
-		Quaternion lookRot = Quaternion.LookRotation( dir );
+            Quaternion lookRot = Quaternion.LookRotation(dir);
 
-		//Debug.Log(lookRot.eulerAngles.y);
-		turretTransform.rotation = Quaternion.Euler( 0, lookRot.eulerAngles.y, 0 );
+            //Debug.Log(lookRot.eulerAngles.y);
+            turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
 
-		fireCooldownLeft -= Time.deltaTime;
-		if(fireCooldownLeft <= 0 && dir.magnitude <= range) {
-			fireCooldownLeft = fireCooldown;
-			ShootAt(nearestEnemy);
-		}
+            fireCooldownLeft -= Time.deltaTime;
+            if (fireCooldownLeft <= 0 && dir.magnitude <= range)
+            {
+                fireCooldownLeft = fireCooldown;
+                StartCoroutine(tower_animation.Tshot());
+                ShootAt(nearestEnemy);
+            }
+        }
+        else
+        {
+            StartCoroutine(tower_animation.Tconstruct());
+        }
 
 	}
 
 	void ShootAt(Monster e) {
-		// TODO: Fire out the tip!
+		
 		GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
 
 		Bullet b = bulletGO.GetComponent<Bullet>();

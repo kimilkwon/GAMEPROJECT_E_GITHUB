@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour {
     float speed= 0.25f;
     bool start = false;
     Vector3 PlayerMovementTarget;
-    Vector3[] MovementTarget = new Vector3[100];
+    Monster_Animation monAnimation =null;
     int movement = 0;
     int movementMax = 0;
     float hp = 500;
@@ -20,21 +20,17 @@ public class Monster : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("PLAYER");
         nav = GetComponent<NavMeshAgent>();
+        monAnimation = GetComponentInChildren<Monster_Animation>();
     }
-    void OnTriggerEnter2D(Collider2D coll)//충돌 체크 함수
-    {
-        if (coll.gameObject.tag == "BULLET")
-        {
-           // hp -= 1;
-           
-          //  Destroy(coll.gameObject);
-        }
-    }
+    
     public void TakeDamage(float damage)
     {
+        
         hp -= damage;
+       StartCoroutine(monAnimation.beShot());
         if (hp <= 0)
         {
+            StartCoroutine(monAnimation.Die());
             Die();
         }
     }
