@@ -3,14 +3,15 @@ using System.Collections;
 
 public class TileCollison : MonoBehaviour {
     Tile tile = null;
-
+    UI_Center U_Center;
+    public int item = 0;
     // Use this for initialization
     void Start () {
 	
 	}
 	void Awake()
     {
-
+        U_Center = GameObject.Find("SCRPIPTS").GetComponent<UI_Center>();
         tile = GetComponentInChildren<Tile>();
     }
 	// Update is called once per frame
@@ -33,6 +34,7 @@ public class TileCollison : MonoBehaviour {
     }
     public void Die()
     {
+        U_Center.viewUp(item);
         Destroy(this.gameObject);
     }
 }

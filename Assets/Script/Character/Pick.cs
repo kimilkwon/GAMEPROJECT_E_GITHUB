@@ -4,32 +4,36 @@ using System.Collections;
 public class Pick : MonoBehaviour
 {
     float speed = 1.5f;
+
+    Vector3 dir;
     Vector3 mPosition;
-    Vector2 Direction;
-    Vector3 target;
     // Use this for initialization
     void Start()
     {
          
         mPosition = Input.mousePosition; //마우스 좌표 저장
+        set();
 
-
-        Destroy(this.gameObject, 0.5f);
+        Destroy(this.gameObject, 1.0f);
     }
-
-    // Update is called once per frame
-    void Update()
+    void set()
     {
-        
+
         Vector3 oPosition = transform.position; //게임 오브젝트 좌표 저장
 
 
-        mPosition.z = this.transform.position.z - Camera.main.transform.position.z;
+        mPosition.z = oPosition.z - Camera.main.transform.position.z;
 
-        target = Camera.main.ScreenToWorldPoint(mPosition);
-        target.y -= 10;
-        //Direction = (target - this.transform.position);
-        target.Normalize();
-        this.transform.Translate(target * speed * Time.deltaTime);
+        Vector3 target = Camera.main.ScreenToWorldPoint(mPosition);
+
+        dir = target - this.transform.position;
+        dir.y -= 10;
+        dir.Normalize();
+    }
+    // Update is called once per frame
+    void Update()
+    {
+      
+        this.transform.Translate(dir * speed * Time.deltaTime);
     }
 }

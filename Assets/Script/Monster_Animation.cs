@@ -4,8 +4,9 @@ using System.Collections;
 public class Monster_Animation : MonoBehaviour {
 
     Animator animator;
-    bool beShotBool=false;
-    bool dieBool = false;
+    public bool beShotBool =false;
+    public bool dieBool = false;
+    public bool die = false;
     // Use this for initialization
     void Start () {
 	
@@ -34,8 +35,8 @@ public class Monster_Animation : MonoBehaviour {
     {
         dieBool = true;
         animator.Play("Zombi_Die");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         yield return null;
-      
+        die= true;
     }
 }

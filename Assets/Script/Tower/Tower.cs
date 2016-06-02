@@ -26,9 +26,25 @@ public class Tower : MonoBehaviour {
     {
         tower_animation = GetComponentInChildren<Tower_Animation>();
     }
-	
+
+    void OnTriggerEnter(Collider coll)//충돌 체크 함수
+    {
+
+        if (coll.gameObject.tag == "ZOMBI" && tower_animation.boom_check == false&& tower_animation.construct ==true)
+        {
+            StartCoroutine(tower_animation.Tboom());
+           
+        }
+    }
+
+    void die()
+    {
+       if(tower_animation.boom == true )
+        Destroy(this.gameObject);
+    }
 	// Update is called once per frame
 	void Update () {
+       die();
         if (tower_animation.construct == true)
         {
             Monster[] monsters = GameObject.FindObjectsOfType<Monster>();
@@ -56,20 +72,26 @@ public class Tower : MonoBehaviour {
 
             Quaternion lookRot = Quaternion.LookRotation(dir);
 
-            //Debug.Log(lookRot.eulerAngles.y);
+         
             turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
 
             fireCooldownLeft -= Time.deltaTime;
             if (fireCooldownLeft <= 0 && dir.magnitude <= range)
             {
                 fireCooldownLeft = fireCooldown;
-                StartCoroutine(tower_animation.Tshot());
-                ShootAt(nearestEnemy);
+                if (tower_animation.boom_check == false && tower_animation.boom == false)
+                {
+                    StartCoroutine(tower_animation.Tshot());
+                    ShootAt(nearestEnemy);
+                }
             }
         }
         else
         {
-            StartCoroutine(tower_animation.Tconstruct());
+            if (tower_animation.boom_check == false && tower_animation.boom == false)
+            {
+                StartCoroutine(tower_animation.Tconstruct());
+            }
         }
 
 	}

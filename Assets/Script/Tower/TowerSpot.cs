@@ -7,22 +7,24 @@ public class TowerSpot : MonoBehaviour {
         this.transform.rotation = Quaternion.Euler(90f, 0, 0);
     }
 	void OnMouseUp() {
-		
+        if (Input.GetKey(KeyCode.B))
+        {
 
-		BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
-		if(bm.selectedTower != null) {
-			/*ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
-			if(sm.money < bm.selectedTower.GetComponent<Tower>().cost) {
-				Debug.Log("Not enough money!");
-				return;
-			}
+            BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
+            if (bm.selectedTower != null)
+            {
+                /*ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
+                if(sm.money < bm.selectedTower.GetComponent<Tower>().cost) {
+                    Debug.Log("Not enough money!");
+                    return;
+                }
 
-			sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
-            */
-			
-			Instantiate(bm.selectedTower, transform.position, transform.rotation);
-			Destroy(transform.gameObject);
-         
+                sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
+                */
+
+                Instantiate(bm.selectedTower, transform.position, transform.rotation);
+                Destroy(transform.gameObject);
+
                 GameObject[] obj = GameObject.FindGameObjectsWithTag("DRAG");
                 foreach (GameObject ob in obj)
                 {
@@ -30,7 +32,8 @@ public class TowerSpot : MonoBehaviour {
                     Destroy(ob);
 
                 }
-            
+
+            }
         }
 	}
    

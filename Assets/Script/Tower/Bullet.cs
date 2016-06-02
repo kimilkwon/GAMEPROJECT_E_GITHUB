@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(target == null) {
-			// Our enemy went away!
+		
 			Destroy(gameObject);
 			return;
 		}
@@ -27,13 +27,11 @@ public class Bullet : MonoBehaviour {
 		float distThisFrame = speed * Time.deltaTime;
 
 		if(dir.magnitude <= distThisFrame) {
-			// We reached the node
+
 			DoBulletHit();
 		}
 		else {
-			// TODO: Consider ways to smooth this motion.
-
-			// Move towards node
+	
 			transform.Translate( dir.normalized * distThisFrame, Space.World );
 			Quaternion targetRotation = Quaternion.LookRotation( dir );
 			this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime*5);

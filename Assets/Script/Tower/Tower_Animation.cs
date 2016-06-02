@@ -4,25 +4,32 @@ using System.Collections;
 public class Tower_Animation : MonoBehaviour {
     Animator animator;
     bool shot = false;
-    bool boom = false;
+    public bool boom = false;
+    public bool boom_check = false;
     public bool construct = false;
     bool complete = false;
+
+    
     // Use this for initialization
     void Start () {
-	
-	}
+       
+
+    }
     void Awake()
     {
         animator = GetComponent<Animator>();
+        
     }
     // Update is called once per frame
     void Update () {
 	
 
 	}
+   
     public IEnumerator Tcomplete()
     {
         complete = true;
+
         animator.Play("TOWER_complete");
         
         yield return null;
@@ -32,15 +39,17 @@ public class Tower_Animation : MonoBehaviour {
     public IEnumerator Tshot()
     {
         shot = true;
-        animator.Play("TOWER_Shot");
+        if (boom_check == false &&boom == false)
+            animator.Play("TOWER_Shot");
         yield return new WaitForSeconds(0.5f);
         yield return null;
-        animator.Play("TOWER_complete");
+        if (boom_check == false && boom == false)
+            animator.Play("TOWER_complete");
         shot = false;
     }
     public IEnumerator Tconstruct()
     {
-        
+       
         animator.Play("TOWER_construct");
         yield return new WaitForSeconds(0.8f);
         yield return null;
@@ -50,23 +59,24 @@ public class Tower_Animation : MonoBehaviour {
     }
     public IEnumerator Tboom()
     {
-        
+        boom_check = true;
         animator.Play("TOWER_boom");
-        yield return new WaitForSeconds(0.15f);
-        yield return null;
+        yield return new WaitForSeconds(0.3f);
+        
         boom = true;
-
+       
+        yield return null;
 
     }
 
     public void AnimationCtrl()
     {
        
-        if (construct!= true)
+        if (construct!= true&& boom_check==false)
         {
             StartCoroutine(Tconstruct());
         }
-        if(shot!=true&&boom!=true)
+        if(shot!=true&&boom!=true&& boom_check==false)
         {
             StartCoroutine(Tcomplete());
         }

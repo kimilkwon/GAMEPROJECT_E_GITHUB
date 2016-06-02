@@ -69,24 +69,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Character\Bullet2.cs" />
+    <Compile Include="Assets\Script\Character\Bullet_Case.cs" />
     <Compile Include="Assets\Script\Character\Character.cs" />
     <Compile Include="Assets\Script\Character\Character_Rotation.cs" />
     <Compile Include="Assets\Script\Character\Character_move.cs" />
     <Compile Include="Assets\Script\Character\Pick.cs" />
     <Compile Include="Assets\Script\Monster.cs" />
     <Compile Include="Assets\Script\Monster_Animation.cs" />
-    <Compile Include="Assets\Script\System\Bullet2.cs" />
+    <Compile Include="Assets\Script\System\AutoFade.cs" />
+    <Compile Include="Assets\Script\System\Button.cs" />
     <Compile Include="Assets\Script\System\CameraCenter.cs" />
     <Compile Include="Assets\Script\System\Cursor_.cs" />
+    <Compile Include="Assets\Script\System\MonsterSpawn.cs" />
     <Compile Include="Assets\Script\System\Tile\Tile.cs" />
     <Compile Include="Assets\Script\System\Tile\TileCollison.cs" />
     <Compile Include="Assets\Script\System\Tile\TileMap.cs" />
+    <Compile Include="Assets\Script\System\TimeUI.cs" />
+    <Compile Include="Assets\Script\System\UI_Center.cs" />
     <Compile Include="Assets\Script\Tower\BuildingManager.cs" />
     <Compile Include="Assets\Script\Tower\Bullet.cs" />
     <Compile Include="Assets\Script\Tower\Drag.cs" />
     <Compile Include="Assets\Script\Tower\Tower.cs" />
     <Compile Include="Assets\Script\Tower\TowerSpot.cs" />
     <Compile Include="Assets\Script\Tower\Tower_Animation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\Plane_No_zTest.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

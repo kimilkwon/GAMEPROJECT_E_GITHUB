@@ -7,7 +7,7 @@ public class Character_Rotation : MonoBehaviour {
     float rotateSpeed = 5.0f;
     // Use this for initialization
     void Start () {
-        characterTransform = transform.Find("Body");
+        characterTransform = transform.Find("Character");
     }
 	
 	// Update is called once per frame
@@ -26,17 +26,17 @@ public class Character_Rotation : MonoBehaviour {
         Vector3 oPosition = transform.position; //게임 오브젝트 좌표 저장
 
 
-        mPosition.z = oPosition.z - Camera.main.transform.position.z;
+       mPosition.z = oPosition.z - Camera.main.transform.position.z;
 
         Vector3 target = Camera.main.ScreenToWorldPoint(mPosition);
-        target.y -= 10;
+       // target.y -= 10;
 
         Vector3 dir = target - this.transform.position;
-
+        dir.y -= 10;
         Quaternion lookRot = Quaternion.LookRotation(dir);
 
         //Debug.Log(lookRot.eulerAngles.y);
-        characterTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+       this.transform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
 
 
 
