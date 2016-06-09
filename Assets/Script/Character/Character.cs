@@ -7,7 +7,7 @@ public class Character : MonoBehaviour
     // Use this for initialization
     float leftTime = 0.5f;
     int speed = 5; //스피드 
-    Monster monster;
+    
     Animator animator;
     public GameObject Pick;
     public GameObject Bullet;
@@ -38,7 +38,7 @@ public class Character : MonoBehaviour
     void Start()
     {
 
-        monster = GameObject.Find("ZOMBI").GetComponent<Monster>();
+       
     }
 
 

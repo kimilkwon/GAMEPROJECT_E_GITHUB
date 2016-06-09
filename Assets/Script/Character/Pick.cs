@@ -4,7 +4,7 @@ using System.Collections;
 public class Pick : MonoBehaviour
 {
     float speed = 1.5f;
-
+    public GameObject pickani;
     Vector3 dir;
     Vector3 mPosition;
     // Use this for initialization
@@ -16,7 +16,17 @@ public class Pick : MonoBehaviour
 
         Destroy(this.gameObject, 1.0f);
     }
-    void set()
+    void OnTriggerEnter(Collider coll)//충돌 체크 함수
+    {
+        if (coll.gameObject.tag == "TILE")
+        {
+            speed = 0;
+            
+        Instantiate(pickani, this.transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+        void set()
     {
 
         Vector3 oPosition = transform.position; //게임 오브젝트 좌표 저장

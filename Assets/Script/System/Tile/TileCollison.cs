@@ -4,6 +4,7 @@ using System.Collections;
 public class TileCollison : MonoBehaviour {
     Tile tile = null;
     UI_Center U_Center;
+    GameObject collgameobject;
     public int item = 0;
     // Use this for initialization
     void Start () {
@@ -24,7 +25,9 @@ public class TileCollison : MonoBehaviour {
         {
             tile.hp -= 1;
             tile.TileBreakCheak();
-            Destroy(coll.gameObject);
+            
+          
+          
         }
         if (coll.gameObject.tag == "BULLET")
         {

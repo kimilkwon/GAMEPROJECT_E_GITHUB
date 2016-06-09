@@ -7,7 +7,7 @@ public class BuildingManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	  Screen.SetResolution(1280, 1024, true);
 	}
 	
 	// Update is called once per frame
