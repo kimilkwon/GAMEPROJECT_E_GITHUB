@@ -26,7 +26,7 @@ public class Monster_Animation : MonoBehaviour {
     {
         beShotBool = true;
         animator.Play("Zombi_beShot");
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.3f);
         yield return null;
         
         beShotBool = false;

@@ -4,6 +4,7 @@ using System.Collections;
 public class Monster : MonoBehaviour {
 
     GameObject player;
+   
     float speed= 0.25f;
     bool start = false;
     Vector3 PlayerMovementTarget;
@@ -37,6 +38,7 @@ public class Monster : MonoBehaviour {
                     StartCoroutine(monAnimation.Die());
 
             }
+            Destroy(coll.gameObject);
         }
     }
     public void TakeDamage(float damage)

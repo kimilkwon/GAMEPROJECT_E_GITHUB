@@ -22,7 +22,7 @@ public class Pick : MonoBehaviour
         {
             speed = 0;
             
-        Instantiate(pickani, this.transform.position, Quaternion.identity);
+        Instantiate(pickani, new Vector3 (this.transform.position.x, this.transform.position.y+2, this.transform.position.z), Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

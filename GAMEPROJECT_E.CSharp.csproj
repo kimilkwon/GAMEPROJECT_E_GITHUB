@@ -76,6 +76,9 @@
     <Compile Include="Assets\Script\Character\Character_move.cs" />
     <Compile Include="Assets\Script\Character\Pick.cs" />
     <Compile Include="Assets\Script\Character\PickAni.cs" />
+    <Compile Include="Assets\Script\System\Monster\Boss\Boss.cs" />
+    <Compile Include="Assets\Script\System\Monster\Boss\Boss_Ani.cs" />
+    <Compile Include="Assets\Script\System\Monster\Boss\Boss_Bullet.cs" />
     <Compile Include="Assets\Script\System\Monster\Monster.cs" />
     <Compile Include="Assets\Script\System\Monster\MonsterSpawn.cs" />
     <Compile Include="Assets\Script\System\Monster\Monster_Animation.cs" />
