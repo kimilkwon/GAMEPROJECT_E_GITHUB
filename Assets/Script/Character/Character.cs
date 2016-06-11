@@ -23,16 +23,21 @@ public class Character : MonoBehaviour
     bool ch_Shoot = false;
     bool ch_moveAim = false;
     bool ch_Aim = false;
+
     int mode = 1;
 
+    public AudioSource Audio = null;
 
-
+    public AudioClip shot_sound = null;
+    public AudioClip gun_change = null;
+  
 
 
     void Awake()
     {
         animator = GetComponent<Animator>();
-
+        Audio = GetComponent<AudioSource>();
+  
     }
 
     void Start()
@@ -219,18 +224,24 @@ public class Character : MonoBehaviour
         Quaternion lookRot = Quaternion.LookRotation(dir);
         ch_Shoot = true;
         animator.Play("PlayerShoot");
-        //Instantiate(Bullet, new Vector3(this.transform.position.x + 0.3f, this.transform.position.y + 0.5f, this.transform.position.z), Quaternion.identity);
+
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(0.05f);
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(0.05f);
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(1.0f);
         ch_Shoot = false;
-
+     
         yield return null;
     }
     IEnumerator ShootMove()
@@ -238,22 +249,36 @@ public class Character : MonoBehaviour
 
         ch_moveShoot = true;
         animator.Play("PlayerShootMove");
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(0.05f);
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(0.05f);
+        Shot_sound_play();
         Instantiate(Bullet, BulletSpawn.transform.position, Quaternion.identity);
         Instantiate(BulletCase, BulletSpawn.transform.position, Quaternion.identity);
+        
         yield return new WaitForSeconds(1.0f);
+        
+        
         ch_moveShoot = false;
-
+       
         yield return null;
     }
     IEnumerator Aim()
     {
-
+     
+        if(ch_Aim == false)
+        {
+            Audio.clip = gun_change;
+            Audio.volume = 0.5f;
+            Audio.Play();
+        }
         ch_Aim = true;
         animator.Play("PlayerAim");
         yield return new WaitForSeconds(0.65f);
@@ -273,7 +298,13 @@ public class Character : MonoBehaviour
         yield return null;
     }
 
-
+    void Shot_sound_play()
+    {
+        Audio.clip = shot_sound;
+        Audio.volume = 0.5f;
+        Audio.Play();
+    }
+   
 
 }
 

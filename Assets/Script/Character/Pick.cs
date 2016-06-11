@@ -7,6 +7,8 @@ public class Pick : MonoBehaviour
     public GameObject pickani;
     Vector3 dir;
     Vector3 mPosition;
+
+
     // Use this for initialization
     void Start()
     {
@@ -16,14 +18,17 @@ public class Pick : MonoBehaviour
 
         Destroy(this.gameObject, 1.0f);
     }
+  
     void OnTriggerEnter(Collider coll)//충돌 체크 함수
     {
         if (coll.gameObject.tag == "TILE")
         {
             speed = 0;
             
-        Instantiate(pickani, new Vector3 (this.transform.position.x, this.transform.position.y+2, this.transform.position.z), Quaternion.identity);
+               Instantiate(pickani, new Vector3 (this.transform.position.x, this.transform.position.y+2, this.transform.position.z), Quaternion.identity);
+            
             Destroy(this.gameObject);
+
         }
     }
         void set()
@@ -40,6 +45,7 @@ public class Pick : MonoBehaviour
         dir.y -= 10;
         dir.Normalize();
     }
+   
     // Update is called once per frame
     void Update()
     {

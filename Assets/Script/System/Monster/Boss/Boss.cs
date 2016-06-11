@@ -9,8 +9,7 @@ public class Boss : MonoBehaviour {
     float fireCooldown = 1.0f;
     float fireCooldownLeft = 0;
     float range = 3.0f;
-     
-
+   
     // Use this for initialization
     void Start () {
 	

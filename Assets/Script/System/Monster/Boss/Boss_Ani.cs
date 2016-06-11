@@ -12,6 +12,10 @@ public class Boss_Ani : MonoBehaviour
     bool stop_bool;
     public bool die_bool;
     bool die_startbool;
+    public AudioSource Audio = null;
+    public AudioClip boss_sound = null;
+
+
     // Use this for initialization
     void Start () {
 	
@@ -19,6 +23,7 @@ public class Boss_Ani : MonoBehaviour
     void Awake()
     {
         animator = GetComponent<Animator>();
+        Audio = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update () {
@@ -47,6 +52,7 @@ public class Boss_Ani : MonoBehaviour
     }
     public void Boss_attack()
     {
+        rand_sound();
         for (int i = 0; i < oneShoting; i++)
         {
 
@@ -69,5 +75,17 @@ public class Boss_Ani : MonoBehaviour
       
         yield return null;
 
+    }
+    void rand_sound()
+    {
+        int rnd;
+        rnd = Random.Range(0, 3);
+        if(rnd==2)
+        {
+            Audio.clip = boss_sound;
+            Audio.volume = 0.5f;
+            Audio.Play();
+            
+        }
     }
 }

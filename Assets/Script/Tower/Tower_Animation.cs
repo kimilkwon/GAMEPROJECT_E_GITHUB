@@ -9,7 +9,10 @@ public class Tower_Animation : MonoBehaviour {
     public bool construct = false;
     bool complete = false;
 
-    
+    public AudioSource Audio = null;
+
+    public AudioClip shot_sound = null;
+
     // Use this for initialization
     void Start () {
        
@@ -18,7 +21,7 @@ public class Tower_Animation : MonoBehaviour {
     void Awake()
     {
         animator = GetComponent<Animator>();
-        
+        Audio = GetComponent<AudioSource>();
     }
     // Update is called once per frame
     void Update () {
@@ -39,8 +42,13 @@ public class Tower_Animation : MonoBehaviour {
     public IEnumerator Tshot()
     {
         shot = true;
-        if (boom_check == false &&boom == false)
+        if (boom_check == false && boom == false)
+        {
             animator.Play("TOWER_Shot");
+            Audio.clip = shot_sound;
+            Audio.volume = 0.5f;
+            Audio.Play();
+        }
         yield return new WaitForSeconds(0.5f);
         yield return null;
         if (boom_check == false && boom == false)

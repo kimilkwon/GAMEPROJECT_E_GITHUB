@@ -34,6 +34,11 @@ public class TileCollison : MonoBehaviour {
 
             Destroy(coll.gameObject);
         }
+        if (coll.gameObject.tag == "BOSS_BULLET")
+        {
+
+            Destroy(coll.gameObject);
+        }
     }
     public void Die()
     {
