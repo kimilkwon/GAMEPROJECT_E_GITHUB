@@ -8,7 +8,9 @@ public class Cursor_ : MonoBehaviour {
     public Texture2D cursorTexture; //
     public Texture2D cursorTexture2;
     public Texture2D cursorTexture3;
-    
+
+
+    TowerUI towerUI;
     public bool hotSpotIsCenter = false;
    
     public Vector2 adjustHotSpot = Vector2.zero;
@@ -22,7 +24,12 @@ public class Cursor_ : MonoBehaviour {
 
         StartCoroutine(MyCursor());
     }
+    void Awake()
+    {
 
+        towerUI = GameObject.Find("TowerUI").GetComponent<TowerUI>();
+
+    }
     void Update()
     {
         Mode();
@@ -42,12 +49,14 @@ public class Cursor_ : MonoBehaviour {
         {
             StartCoroutine(MyCursor());
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.B))
         {
+            towerUI.Change_UI_Tower();
             StartCoroutine(MyCursor3());
         }
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.B))
         {
+            towerUI.Change_UI_Basic();
             StartCoroutine(MyCursor());
         }
     }

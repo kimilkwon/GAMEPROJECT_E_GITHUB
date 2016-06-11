@@ -92,6 +92,7 @@
     <Compile Include="Assets\Script\System\UI\CameraCenter.cs" />
     <Compile Include="Assets\Script\System\UI\Cursor_.cs" />
     <Compile Include="Assets\Script\System\UI\TimeUI.cs" />
+    <Compile Include="Assets\Script\System\UI\TowerUI.cs" />
     <Compile Include="Assets\Script\System\UI\UI_Center.cs" />
     <Compile Include="Assets\Script\Tower\BuildingManager.cs" />
     <Compile Include="Assets\Script\Tower\Bullet.cs" />
