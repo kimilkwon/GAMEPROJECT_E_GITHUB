@@ -72,10 +72,13 @@
     <Compile Include="Assets\Script\Character\Bullet2.cs" />
     <Compile Include="Assets\Script\Character\Bullet_Case.cs" />
     <Compile Include="Assets\Script\Character\Character.cs" />
+    <Compile Include="Assets\Script\Character\Character_HP.cs" />
     <Compile Include="Assets\Script\Character\Character_Rotation.cs" />
     <Compile Include="Assets\Script\Character\Character_move.cs" />
+    <Compile Include="Assets\Script\Character\NewBehaviourScript.cs" />
     <Compile Include="Assets\Script\Character\Pick.cs" />
     <Compile Include="Assets\Script\Character\PickAni.cs" />
+    <Compile Include="Assets\Script\System\BG.cs" />
     <Compile Include="Assets\Script\System\BGM.cs" />
     <Compile Include="Assets\Script\System\Monster\Boss\Boss.cs" />
     <Compile Include="Assets\Script\System\Monster\Boss\Boss_Ani.cs" />
@@ -88,6 +91,7 @@
     <Compile Include="Assets\Script\System\Tile\TileCollison.cs" />
     <Compile Include="Assets\Script\System\Tile\TileMap.cs" />
     <Compile Include="Assets\Script\System\UI\AutoFade.cs" />
+    <Compile Include="Assets\Script\System\UI\BossUI.cs" />
     <Compile Include="Assets\Script\System\UI\Button.cs" />
     <Compile Include="Assets\Script\System\UI\CameraCenter.cs" />
     <Compile Include="Assets\Script\System\UI\Cursor_.cs" />

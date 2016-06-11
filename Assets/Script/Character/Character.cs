@@ -7,14 +7,14 @@ public class Character : MonoBehaviour
     // Use this for initialization
     float leftTime = 0.5f;
     int speed = 5; //스피드 
-    
+    int hp = 5;
     Animator animator;
     public GameObject Pick;
     public GameObject Bullet;
     public GameObject BulletCase;
     public GameObject BulletSpawn;
 
-
+    Character_HP ch_hp = null;
     bool ch_pick = false;
     bool ch_move = false;
     bool ch_move_ani = false;
@@ -37,7 +37,7 @@ public class Character : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         Audio = GetComponent<AudioSource>();
-  
+        ch_hp = GameObject.Find("Hp").GetComponent<Character_HP>();
     }
 
     void Start()
@@ -45,6 +45,7 @@ public class Character : MonoBehaviour
 
        
     }
+
 
 
     void Update()
@@ -60,7 +61,7 @@ public class Character : MonoBehaviour
         }
     }
 
-
+   
     void C_Move()
     {
         if (ch_movePick == false && ch_Aim == false)
@@ -210,8 +211,8 @@ public class Character : MonoBehaviour
     }
     IEnumerator Shoot()
     {
-        Vector3 mPosition = Input.mousePosition; //마우스 좌표 저장
-        Vector3 oPosition = transform.position; //게임 오브젝트 좌표 저장
+        Vector3 mPosition = this.transform.position;
+        Vector3 oPosition = transform.position;
 
 
         mPosition.z = oPosition.z - Camera.main.transform.position.z;
@@ -220,8 +221,9 @@ public class Character : MonoBehaviour
         // target.y -= 10;
 
         Vector3 dir = target - this.transform.position;
-        dir.y -= 10;
+        // dir.y -= 10;
         Quaternion lookRot = Quaternion.LookRotation(dir);
+
         ch_Shoot = true;
         animator.Play("PlayerShoot");
 
@@ -304,7 +306,14 @@ public class Character : MonoBehaviour
         Audio.volume = 0.5f;
         Audio.Play();
     }
-   
+    void Rotation()
+    {
+
+       
+
+       
+
+    }
 
 }
 

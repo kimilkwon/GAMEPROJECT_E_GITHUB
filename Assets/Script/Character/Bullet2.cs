@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Bullet2 : MonoBehaviour {
-
+    Character_move character;
     // Use this for initialization
     float speed = 10f;
     Vector3 dir;
@@ -14,10 +14,14 @@ public class Bullet2 : MonoBehaviour {
         set();
         Destroy(this.gameObject,0.5f);
     }
-
+    void Awake()
+    {
+       
+        character = GameObject.Find("CH").GetComponent<Character_move>();
+    }
     void set()
     {
-     
+        Vector3 mPosition = Input.mousePosition; //마우스 좌표 저장
         Vector3 oPosition = transform.position; //게임 오브젝트 좌표 저장
 
 
@@ -31,8 +35,10 @@ public class Bullet2 : MonoBehaviour {
     }
     void Update()
     {
+     
 
-      
+
         this.transform.Translate(dir * speed * Time.deltaTime);
     }
+   
 }

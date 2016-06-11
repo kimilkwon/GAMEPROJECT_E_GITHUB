@@ -40,6 +40,14 @@ public class Monster : MonoBehaviour {
             }
             Destroy(coll.gameObject);
         }
+        if (coll.gameObject.tag == "PLAYER")
+        {
+
+            hp = 0;
+           StartCoroutine(monAnimation.Die());
+
+           
+        }
     }
     public void TakeDamage(float damage)
     {

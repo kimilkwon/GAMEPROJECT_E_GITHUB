@@ -3,8 +3,7 @@ using System.Collections;
 
 public class TowerUI : MonoBehaviour {
 
-    public GameObject TowerUI_A = null;
-    public GameObject TowerUI_B = null;
+
     SpriteRenderer thisSprite,sprite,sprite2;
     public bool Change = true;
 
